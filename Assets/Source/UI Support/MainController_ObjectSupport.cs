@@ -8,14 +8,14 @@ public partial class MainController : MonoBehaviour {
     {
         MeshControl.gameObject.SetActive(true);
         CylinderControl.gameObject.SetActive(false);
-        MainWorld.ShowMeshObject();
+        MainWorld.ShowMeshObject(MeshControl.GetValues());
     }
 
     void ShowCylinder()
     {
         MeshControl.gameObject.SetActive(false);
         CylinderControl.gameObject.SetActive(true);
-        MainWorld.ShowCylinderObject();
+        MainWorld.ShowCylinderObject(CylinderControl.GetValues());
     }
 
     void InitObjectDropdown()

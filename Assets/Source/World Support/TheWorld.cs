@@ -3,7 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TheWorld : MonoBehaviour {
-    GameObject currentObject;
+
+    enum ObjectType
+    {
+        Mesh = 0,
+        Cylinder = 1
+    }
+    ObjectType currentObject = ObjectType.Mesh;
     int ResolutionN;
     int ResolutionM;
     int Rotation;
@@ -14,29 +20,37 @@ public class TheWorld : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        Debug.Log(ResolutionN);
 	}
 
-    public void ShowMeshObject()
+    public void ShowMeshObject(int[] values)
     {
-
+        currentObject = ObjectType.Mesh;
+        SetMeshParameters(values[0], values[1]);
     }
 
-    public void ShowCylinderObject()
+    public void ShowCylinderObject(int[] values)
     {
-
+        currentObject = ObjectType.Cylinder;
+        SetCylinderParameters(values[0], values[1], values[2]);
     }
 
     public void SetMeshParameters(int n, int m)
     {
-        ResolutionN = n;
-        ResolutionM = m;
+        if (currentObject == ObjectType.Mesh)
+        {
+            ResolutionN = n;
+            ResolutionM = m;
+        }
     }
 
     public void SetCylinderParameters(int n, int m, int rotation)
     {
-        ResolutionN = n;
-        ResolutionM = m;
-        Rotation = rotation;
+        if (currentObject == ObjectType.Cylinder)
+        {
+            ResolutionN = n;
+            ResolutionM = m;
+            Rotation = rotation;
+        }
     }
 }

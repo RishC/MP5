@@ -10,8 +10,8 @@ public class CylinderController : MonoBehaviour {
         N.SetSliderListener(ValueChanged);
         M.SetSliderListener(ValueChanged);
         Rotation.SetSliderListener(ValueChanged);
-        N.InitSliderRange(2, 20, 2, "0");
-        M.InitSliderRange(2, 20, 2, "0");
+        N.InitSliderRange(4, 40, 4, "0");
+        M.InitSliderRange(4, 40, 4, "0");
         Rotation.InitSliderRange(10, 360, 275, "0");
     }
 	
@@ -23,5 +23,10 @@ public class CylinderController : MonoBehaviour {
     void ValueChanged(float v)
     {
         MainController.UpdateCylinderParameters((int)N.GetSliderValue(), (int)M.GetSliderValue(), (int)Rotation.GetSliderValue());
+    }
+
+    public int[] GetValues()
+    {
+        return new int[3] { (int)N.GetSliderValue(), (int)M.GetSliderValue(), (int)Rotation.GetSliderValue() };
     }
 }

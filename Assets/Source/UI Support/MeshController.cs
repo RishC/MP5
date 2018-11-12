@@ -22,4 +22,9 @@ public class MeshController : MonoBehaviour {
     {
         MainController.UpdateMeshParameters((int)N.GetSliderValue(), (int)M.GetSliderValue());
     }
+
+    public int[] GetValues()
+    {
+        return new int[2] { (int)N.GetSliderValue(), (int)M.GetSliderValue()};
+    }
 }
