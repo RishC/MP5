@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MainController : MonoBehaviour {
+public partial class MainController : MonoBehaviour {
 
     public TheWorld MainWorld = null;
     public Camera MainCamera = null;
@@ -14,7 +14,7 @@ public class MainController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        ShowMesh();
+        InitGame();
         InitObjectDropdown();
     }
 	
@@ -23,34 +23,10 @@ public class MainController : MonoBehaviour {
 		
 	}
 
-    void ShowMesh()
+    void InitGame()
     {
-        MeshControl.gameObject.SetActive(true);
-        CylinderControl.gameObject.SetActive(false);
-        MainWorld.ShowMeshObject();
+        MainWorld.SetMeshParameters(2, 2);
+        ShowMesh();
     }
 
-    void ShowCylinder()
-    {
-        MeshControl.gameObject.SetActive(false);
-        CylinderControl.gameObject.SetActive(true);
-        MainWorld.ShowCylinderObject();
-    }
-
-    void InitObjectDropdown()
-    {
-        ObjectDropdown.onValueChanged.AddListener(ObjectChange);
-    }
-
-    void ObjectChange(int value)
-    {
-        if (value == 0)
-        {
-            ShowMesh();
-        }
-        if (value == 1)
-        {
-            ShowCylinder();
-        }
-    }
 }
