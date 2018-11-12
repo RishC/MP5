@@ -20,7 +20,6 @@ public class TheWorld : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(ResolutionN);
 	}
 
     public void ShowMeshObject(int[] values)
