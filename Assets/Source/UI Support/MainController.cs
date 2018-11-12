@@ -27,12 +27,14 @@ public class MainController : MonoBehaviour {
     {
         MeshControl.gameObject.SetActive(true);
         CylinderControl.gameObject.SetActive(false);
+        MainWorld.ShowMeshObject();
     }
 
     void ShowCylinder()
     {
         MeshControl.gameObject.SetActive(false);
         CylinderControl.gameObject.SetActive(true);
+        MainWorld.ShowCylinderObject();
     }
 
     void InitObjectDropdown()

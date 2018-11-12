@@ -113,6 +113,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &86437220 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114430940158175694, guid: 0063ea66f79c76c4190ea329cb8d79f0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1632458096}
+  m_Script: {fileID: 11500000, guid: 0a24c3546b83de84cb12a747d3a735d3, type: 3}
+--- !u!114 &133913645 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114430940158175694, guid: 0063ea66f79c76c4190ea329cb8d79f0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1972550726}
+  m_Script: {fileID: 11500000, guid: 0a24c3546b83de84cb12a747d3a735d3, type: 3}
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +295,7 @@ Prefab:
     - target: {fileID: 114696106814286312, guid: 0063ea66f79c76c4190ea329cb8d79f0,
         type: 2}
       propertyPath: m_Text
-      value: 'Cylinder Resolution - N
+      value: 'ResolutionN
 
 '
       objectReference: {fileID: 0}
@@ -311,6 +323,16 @@ Prefab:
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114485966234177824, guid: 0063ea66f79c76c4190ea329cb8d79f0,
+        type: 2}
+      propertyPath: m_WholeNumbers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114485966234177824, guid: 0063ea66f79c76c4190ea329cb8d79f0,
+        type: 2}
+      propertyPath: m_Value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0063ea66f79c76c4190ea329cb8d79f0, type: 2}
@@ -598,6 +620,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cffd0022648e1f44b92d43a6f8700b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  N: {fileID: 133913645}
+  M: {fileID: 1706226286}
 --- !u!1001 &361290429
 Prefab:
   m_ObjectHideFlags: 0
@@ -702,9 +726,7 @@ Prefab:
     - target: {fileID: 114696106814286312, guid: 0063ea66f79c76c4190ea329cb8d79f0,
         type: 2}
       propertyPath: m_Text
-      value: 'Resolution - M
-
-'
+      value: ResolutionM
       objectReference: {fileID: 0}
     - target: {fileID: 224795615800393780, guid: 0063ea66f79c76c4190ea329cb8d79f0,
         type: 2}
@@ -730,6 +752,16 @@ Prefab:
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114485966234177824, guid: 0063ea66f79c76c4190ea329cb8d79f0,
+        type: 2}
+      propertyPath: m_WholeNumbers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114485966234177824, guid: 0063ea66f79c76c4190ea329cb8d79f0,
+        type: 2}
+      propertyPath: m_Value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0063ea66f79c76c4190ea329cb8d79f0, type: 2}
@@ -960,7 +992,7 @@ Prefab:
     - target: {fileID: 114696106814286312, guid: 0063ea66f79c76c4190ea329cb8d79f0,
         type: 2}
       propertyPath: m_Text
-      value: Cylinder Rotation
+      value: Rotation
       objectReference: {fileID: 0}
     - target: {fileID: 224795615800393780, guid: 0063ea66f79c76c4190ea329cb8d79f0,
         type: 2}
@@ -986,6 +1018,16 @@ Prefab:
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114485966234177824, guid: 0063ea66f79c76c4190ea329cb8d79f0,
+        type: 2}
+      propertyPath: m_WholeNumbers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114485966234177824, guid: 0063ea66f79c76c4190ea329cb8d79f0,
+        type: 2}
+      propertyPath: m_Value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0063ea66f79c76c4190ea329cb8d79f0, type: 2}
@@ -1148,6 +1190,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7997fc318add96e45bd1f64676d13376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  N: {fileID: 1589532881}
+  M: {fileID: 86437220}
+  Rotation: {fileID: 981606511}
 --- !u!1 &689096590
 GameObject:
   m_ObjectHideFlags: 0
@@ -1402,6 +1447,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &981606511 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114430940158175694, guid: 0063ea66f79c76c4190ea329cb8d79f0,
+    type: 2}
+  m_PrefabInternal: {fileID: 554184260}
+  m_Script: {fileID: 11500000, guid: 0a24c3546b83de84cb12a747d3a735d3, type: 3}
 --- !u!1001 &986977025
 Prefab:
   m_ObjectHideFlags: 0
@@ -1915,6 +1966,12 @@ MonoBehaviour:
   MeshControl: {fileID: 344486057}
   CylinderControl: {fileID: 630777836}
   ObjectDropdown: {fileID: 328501251}
+--- !u!114 &1589532881 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114430940158175694, guid: 0063ea66f79c76c4190ea329cb8d79f0,
+    type: 2}
+  m_PrefabInternal: {fileID: 188069114}
+  m_Script: {fileID: 11500000, guid: 0a24c3546b83de84cb12a747d3a735d3, type: 3}
 --- !u!1001 &1632458096
 Prefab:
   m_ObjectHideFlags: 0
@@ -2019,7 +2076,7 @@ Prefab:
     - target: {fileID: 114696106814286312, guid: 0063ea66f79c76c4190ea329cb8d79f0,
         type: 2}
       propertyPath: m_Text
-      value: 'Cylinder Resolution - M
+      value: 'ResolutionM
 
 '
       objectReference: {fileID: 0}
@@ -2047,6 +2104,16 @@ Prefab:
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114485966234177824, guid: 0063ea66f79c76c4190ea329cb8d79f0,
+        type: 2}
+      propertyPath: m_WholeNumbers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114485966234177824, guid: 0063ea66f79c76c4190ea329cb8d79f0,
+        type: 2}
+      propertyPath: m_Value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0063ea66f79c76c4190ea329cb8d79f0, type: 2}
@@ -2173,6 +2240,12 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1645212975}
   m_CullTransparentMesh: 0
+--- !u!114 &1706226286 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114430940158175694, guid: 0063ea66f79c76c4190ea329cb8d79f0,
+    type: 2}
+  m_PrefabInternal: {fileID: 361290429}
+  m_Script: {fileID: 11500000, guid: 0a24c3546b83de84cb12a747d3a735d3, type: 3}
 --- !u!1 &1880233974
 GameObject:
   m_ObjectHideFlags: 0
@@ -2435,9 +2508,7 @@ Prefab:
     - target: {fileID: 114696106814286312, guid: 0063ea66f79c76c4190ea329cb8d79f0,
         type: 2}
       propertyPath: m_Text
-      value: 'Resolution - N
-
-'
+      value: ResolutionN
       objectReference: {fileID: 0}
     - target: {fileID: 224795615800393780, guid: 0063ea66f79c76c4190ea329cb8d79f0,
         type: 2}
@@ -2463,6 +2534,16 @@ Prefab:
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114485966234177824, guid: 0063ea66f79c76c4190ea329cb8d79f0,
+        type: 2}
+      propertyPath: m_WholeNumbers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114485966234177824, guid: 0063ea66f79c76c4190ea329cb8d79f0,
+        type: 2}
+      propertyPath: m_Value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0063ea66f79c76c4190ea329cb8d79f0, type: 2}

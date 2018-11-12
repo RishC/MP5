@@ -13,4 +13,14 @@ public class TheWorld : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void ShowMeshObject()
+    {
+
+    }
+
+    public void ShowCylinderObject()
+    {
+
+    }
 }

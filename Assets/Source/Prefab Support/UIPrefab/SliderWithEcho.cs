@@ -8,10 +8,11 @@ public class SliderWithEcho : MonoBehaviour {
     public Slider TheSlider = null;
     public Text TheEcho = null;
     public Text TheLabel = null;
-
+    
     public delegate void SliderCallbackDelegate(float v);      // defined a new data type
     private SliderCallbackDelegate mCallBack = null;           // private instance of the data type
 
+    string formatString = null;
 
 	// Use this for initialization
 	void Start () {
@@ -30,7 +31,7 @@ public class SliderWithEcho : MonoBehaviour {
     // GUI element changes the object
 	void SliderValueChange(float v)
     {
-        TheEcho.text = v.ToString("0.0000");
+        TheEcho.text = v.ToString(formatString);
         // Debug.Log("SliderValueChange: " + v);
         if (mCallBack != null)
             mCallBack(v);
@@ -39,8 +40,9 @@ public class SliderWithEcho : MonoBehaviour {
     public float GetSliderValue() { return TheSlider.value; }
     public void SetSliderLabel(string l) { TheLabel.text = l; }
     public void SetSliderValue(float v) { TheSlider.value = v; SliderValueChange(v); }
-    public void InitSliderRange(float min, float max, float v)
+    public void InitSliderRange(float min, float max, float v, string formatStr = "0.0000")
     {
+        formatString = formatStr;
         TheSlider.minValue = min;
         TheSlider.maxValue = max;
         SetSliderValue(v);
