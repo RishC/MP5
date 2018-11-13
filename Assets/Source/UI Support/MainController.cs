@@ -11,9 +11,10 @@ public partial class MainController : MonoBehaviour {
     public MeshController MeshControl = null;
     public CylinderController CylinderControl = null;
     public Dropdown ObjectDropdown = null;
+    public CameraManipulation MCM = null; //MainCameraManipulation
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         InitGame();
         InitObjectDropdown();
     }
