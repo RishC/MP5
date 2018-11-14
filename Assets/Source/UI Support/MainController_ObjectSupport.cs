@@ -35,13 +35,13 @@ public partial class MainController : MonoBehaviour {
         }
     }
 
-    public void UpdateMeshParameters(int n, int m)
+    public void UpdateMeshParameters(int m, int n)
     {
-        MainWorld.SetMeshParameters(n, m);
+        MainWorld.SetMeshParameters(m, n);
     }
 
-    public void UpdateCylinderParameters(int n, int m, int rotation)
+    public void UpdateCylinderParameters(int m, int n, int rotation)
     {
-        MainWorld.SetCylinderParameters(n, m, rotation);
+        MainWorld.SetCylinderParameters(m, n, rotation);
     }
 }

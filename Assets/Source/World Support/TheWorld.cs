@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class TheWorld : MonoBehaviour {
 
+    public MyMesh TheMesh = null;
+
     enum ObjectType
     {
         Mesh = 0,
         Cylinder = 1
     }
     ObjectType currentObject = ObjectType.Mesh;
-    int ResolutionN;
     int ResolutionM;
+    int ResolutionN;
     int Rotation;
 	// Use this for initialization
 	void Start () {
@@ -34,21 +36,22 @@ public class TheWorld : MonoBehaviour {
         SetCylinderParameters(values[0], values[1], values[2]);
     }
 
-    public void SetMeshParameters(int n, int m)
+    public void SetMeshParameters(int m, int n)
     {
         if (currentObject == ObjectType.Mesh)
         {
-            ResolutionN = n;
             ResolutionM = m;
+            ResolutionN = n;
+            TheMesh.modifyResolution(m, n);
         }
     }
 
-    public void SetCylinderParameters(int n, int m, int rotation)
+    public void SetCylinderParameters(int m, int n, int rotation)
     {
         if (currentObject == ObjectType.Cylinder)
         {
-            ResolutionN = n;
             ResolutionM = m;
+            ResolutionN = n;
             Rotation = rotation;
         }
     }

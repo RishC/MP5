@@ -26,8 +26,8 @@ public partial class MainController : MonoBehaviour {
 
     void InitGame()
     {
-        MainWorld.SetMeshParameters(2, 2);
-        ShowMesh();
+        MainWorld.SetMeshParameters(5, 5);
+        //ShowMesh();
     }
 
 }

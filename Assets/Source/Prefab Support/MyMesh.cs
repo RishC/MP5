@@ -5,19 +5,27 @@ using UnityEngine;
 public partial class MyMesh : MonoBehaviour
 {
 
-    float width = 1.75f; //width of mesh
-    float height = 1.75f; //height of mesh
+    float width = 2f; //width of mesh
+    float height = 2f; //height of mesh
 
-    public int M = 20; //resolution for rows
-    public int N = 20; // rsolution for columns
+    public int M = 5; //resolution for rows
+    public int N = 5; // rsolution for columns
 
     // Use this for initialization
     void Start () {
+        M--; N--;
+        updateMesh();
+    }
+
+    void Update()
+    {
+         Mesh theMesh = GetComponent<MeshFilter>().mesh;         Vector3[] v = theMesh.vertices;         for (int i = 0; i < mControllers.Length; i++)         {             v[i] = mControllers[i].transform.localPosition;         }          theMesh.vertices = v;
+    }
+
+    void updateMesh() {
+
         Mesh theMesh = GetComponent<MeshFilter>().mesh;   // get the mesh component
         theMesh.Clear();    // delete whatever is there!!
-
-        M--;
-        N--;
 
         int vertNum = (M + 1) * (N + 1);
         int triangNum = (2 * M * N * 3);
@@ -26,8 +34,8 @@ public partial class MyMesh : MonoBehaviour
         int[] t = new int[triangNum];         // Number of triangles: 2x2 mesh and 2x triangles on each mesh-unit
         Vector3[] n = new Vector3[vertNum];   // MUST be the same as number of vertices
 
-        float deltaM = height / (M - 2);
-        float deltaN = width / (N - 2);
+        float deltaM = height / M;
+        float deltaN = width / N;
 
         int z = 0;
         for (int i = 0; i < (M + 1); i++)
@@ -74,8 +82,10 @@ public partial class MyMesh : MonoBehaviour
         InitControllers(v);
     }
 
-    void Update()
-    {         Mesh theMesh = GetComponent<MeshFilter>().mesh;         Vector3[] v = theMesh.vertices;         for (int i = 0; i < mControllers.Length; i++)         {             v[i] = mControllers[i].transform.localPosition;         }          theMesh.vertices = v;
+    public void modifyResolution(int m, int n){
+        if (m >= 2) M = m - 1;
+        if (n >= 2)  N = n - 1;
+        updateMesh();
     }
 }
  

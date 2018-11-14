@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MeshController : MonoBehaviour {
-    public SliderWithEcho N, M;
+
+    public SliderWithEcho M, N;
     public MainController MainController;
 	// Use this for initialization
 	void Start () {
-        N.SetSliderListener(ValueChanged);
-        M.SetSliderListener(ValueChanged);
-        N.InitSliderRange(2, 20, 2, "0");
-        M.InitSliderRange(2, 20, 2, "0");
+        M.SetSliderListener(MValueChanged);
+        N.SetSliderListener(NValueChanged);
+
+        M.InitSliderRange(2, 20, 5, "0");
+        N.InitSliderRange(2, 20, 5, "0");
     }
 	
 	// Update is called once per frame
@@ -18,9 +20,14 @@ public class MeshController : MonoBehaviour {
 		
 	}
 
-    void ValueChanged(float v)
+    void MValueChanged(float v)
     {
-        MainController.UpdateMeshParameters((int)N.GetSliderValue(), (int)M.GetSliderValue());
+        MainController.UpdateMeshParameters( (int)v, -1);
+    }
+
+    void NValueChanged(float v)
+    {
+        MainController.UpdateMeshParameters(-1, (int)v);
     }
 
     public int[] GetValues()
