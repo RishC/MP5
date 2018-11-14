@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class VertexController : MonoBehaviour {
 
+    bool isSelected = false;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -13,4 +15,20 @@ public class VertexController : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    void ChangeColorTo(Color c){
+        gameObject.GetComponent<Renderer>().material.color = c;
+    }
+
+    public void Select()
+    {
+        isSelected = true;
+        ChangeColorTo(Color.black);
+    }
+
+    public void Unselect()
+    {
+        isSelected = false;
+        ChangeColorTo(Color.white);
+    }
 }

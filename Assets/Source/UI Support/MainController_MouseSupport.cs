@@ -29,6 +29,24 @@ public partial class MainController : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.LeftControl)) {
             if (MainWorld.TheMesh.manipulationIsOff == true) MainWorld.TheMesh.InitControllers();
+
+            //watch for selection with LBM
+            if (Input.GetMouseButtonDown(0)) // Mouse Left Down
+            {
+                RaycastHit hitInfo = new RaycastHit();
+                bool hit = Physics.Raycast(MainCamera.ScreenPointToRay(Input.mousePosition), out hitInfo);
+                if (hit)
+                {
+                    VertexController VC = hitInfo.transform.gameObject.GetComponent<VertexController>();
+                    if (!VC) return; //hit point isn't a vertex
+
+                    MainWorld.SelectVertex(VC);
+                }
+                else
+                {
+                    Debug.Log("No hit");
+                }
+            }
         }
         else {
             if (MainWorld.TheMesh.manipulationIsOff == false) MainWorld.TheMesh.ClearControllers();

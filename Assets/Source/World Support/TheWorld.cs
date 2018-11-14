@@ -6,6 +6,8 @@ public class TheWorld : MonoBehaviour {
 
     public MyMesh TheMesh = null;
 
+    VertexController selectedVertex = null;
+
     enum ObjectType
     {
         Mesh = 0,
@@ -54,5 +56,11 @@ public class TheWorld : MonoBehaviour {
             ResolutionN = n;
             Rotation = rotation;
         }
+    }
+
+    public void SelectVertex( VertexController v){
+        if (selectedVertex != null) selectedVertex.Unselect();
+        selectedVertex = v;
+        selectedVertex.Select();
     }
 }
