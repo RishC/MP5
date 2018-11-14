@@ -11,6 +11,8 @@ public partial class MyMesh : MonoBehaviour
     public int M = 5; //resolution for rows
     public int N = 5; // rsolution for columns
 
+    public bool manipulationIsOff = true;
+
     // Use this for initialization
     void Start () {
         M--; N--;
@@ -19,7 +21,10 @@ public partial class MyMesh : MonoBehaviour
 
     void Update()
     {
-         Mesh theMesh = GetComponent<MeshFilter>().mesh;         Vector3[] v = theMesh.vertices;         for (int i = 0; i < mControllers.Length; i++)         {             v[i] = mControllers[i].transform.localPosition;         }          theMesh.vertices = v;
+         Mesh theMesh = GetComponent<MeshFilter>().mesh;         Vector3[] v = theMesh.vertices;
+
+        if (mControllers == null || manipulationIsOff == true) return;         for (int i = 0; i < mControllers.Length; i++)         {
+            v[i] = mControllers[i].transform.localPosition;         }          theMesh.vertices = v;
     }
 
     void updateMesh() {
@@ -79,7 +84,7 @@ public partial class MyMesh : MonoBehaviour
         theMesh.triangles = t; //  new int[3];
         theMesh.normals = n;
 
-        InitControllers(v);
+        if (manipulationIsOff == false) InitControllers();
     }
 
     public void modifyResolution(int m, int n){
