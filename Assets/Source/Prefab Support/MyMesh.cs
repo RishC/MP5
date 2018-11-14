@@ -5,13 +5,19 @@ using UnityEngine;
 public partial class MyMesh : MonoBehaviour
 {
 
-    public int M = 2;
-    public int N = 2;
+    float width = 1.75f; //width of mesh
+    float height = 1.75f; //height of mesh
+
+    public int M = 20; //resolution for rows
+    public int N = 20; // rsolution for columns
 
     // Use this for initialization
     void Start () {
         Mesh theMesh = GetComponent<MeshFilter>().mesh;   // get the mesh component
         theMesh.Clear();    // delete whatever is there!!
+
+        M--;
+        N--;
 
         int vertNum = (M + 1) * (N + 1);
         int triangNum = (2 * M * N * 3);
@@ -20,12 +26,15 @@ public partial class MyMesh : MonoBehaviour
         int[] t = new int[triangNum];         // Number of triangles: 2x2 mesh and 2x triangles on each mesh-unit
         Vector3[] n = new Vector3[vertNum];   // MUST be the same as number of vertices
 
+        float deltaM = height / (M - 2);
+        float deltaN = width / (N - 2);
+
         int z = 0;
         for (int i = 0; i < (M + 1); i++)
         {
             for (int j = 0; j < (N + 1); j++)
             {
-                v[z] = new Vector3(j - 1, 0, i - 1);
+                v[z] = new Vector3(j * deltaN - 1, 0, i * deltaM - 1);
                 z++;
             }
         }
