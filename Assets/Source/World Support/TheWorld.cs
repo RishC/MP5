@@ -7,7 +7,9 @@ public class TheWorld : MonoBehaviour {
     public MyMesh TheMesh = null;
 
     GameObject selectedAxisFrame = null;
+    AxisFrame selectedAxisFrameScript = null;
     VertexController selectedVertex = null;
+    char selectedAxis = 'n';
 
     enum ObjectType
     {
@@ -71,10 +73,28 @@ public class TheWorld : MonoBehaviour {
         selectedAxisFrame = Instantiate(Resources.Load("AxisFrame")) as GameObject;
         selectedAxisFrame.transform.localPosition = selectedVertex.transform.localPosition;
         selectedAxisFrame.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+        selectedAxisFrameScript = selectedAxisFrame.GetComponent<AxisFrame>();
+        SetSelectedAxis('n');
     }
 
     public void RemoveAxisFrameFromSelected(){
         Destroy(selectedAxisFrame);
         selectedAxisFrame = null;
+        selectedAxisFrameScript = null;
+    }
+
+    public void SetSelectedAxis(char c){
+        selectedAxis = c;
+        if(selectedAxisFrameScript) selectedAxisFrameScript.SelectAxis(c);
+    }
+
+    public char GetSelectedAxis(){
+        return selectedAxis;
+    }
+
+    public void MoveAxisFrame(float amount)
+    {
+        selectedAxisFrameScript.TranslateTo(amount, selectedAxis);
+        selectedVertex.transform.localPosition = selectedAxisFrameScript.GetTranslation();
     }
 }
