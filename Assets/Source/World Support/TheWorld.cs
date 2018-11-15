@@ -6,6 +6,7 @@ public class TheWorld : MonoBehaviour {
 
     public MyMesh TheMesh = null;
 
+    GameObject selectedAxisFrame = null;
     VertexController selectedVertex = null;
 
     enum ObjectType
@@ -60,7 +61,20 @@ public class TheWorld : MonoBehaviour {
 
     public void SelectVertex( VertexController v){
         if (selectedVertex != null) selectedVertex.Unselect();
+        RemoveAxisFrameFromSelected();
         selectedVertex = v;
         selectedVertex.Select();
+        AddAxisFrameToSelected();
+    }
+
+    public void AddAxisFrameToSelected(){
+        selectedAxisFrame = Instantiate(Resources.Load("AxisFrame")) as GameObject;
+        selectedAxisFrame.transform.localPosition = selectedVertex.transform.localPosition;
+        selectedAxisFrame.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+    }
+
+    public void RemoveAxisFrameFromSelected(){
+        Destroy(selectedAxisFrame);
+        selectedAxisFrame = null;
     }
 }

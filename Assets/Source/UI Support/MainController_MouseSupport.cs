@@ -37,10 +37,12 @@ public partial class MainController : MonoBehaviour
                 bool hit = Physics.Raycast(MainCamera.ScreenPointToRay(Input.mousePosition), out hitInfo);
                 if (hit)
                 {
-                    VertexController VC = hitInfo.transform.gameObject.GetComponent<VertexController>();
-                    if (!VC) return; //hit point isn't a vertex
+                    if (hitInfo.transform.gameObject.name == "Sphere"){
+                        VertexController VC = hitInfo.transform.gameObject.GetComponent<VertexController>();
+                        if (!VC) return; //hit point isn't a vertex
 
-                    MainWorld.SelectVertex(VC);
+                        MainWorld.SelectVertex(VC);
+                    }
                 }
                 else
                 {
@@ -49,7 +51,10 @@ public partial class MainController : MonoBehaviour
             }
         }
         else {
-            if (MainWorld.TheMesh.manipulationIsOff == false) MainWorld.TheMesh.ClearControllers();
+            if (MainWorld.TheMesh.manipulationIsOff == false){
+                MainWorld.TheMesh.ClearControllers();
+                MainWorld.RemoveAxisFrameFromSelected();
+            } 
         }
     }
 
