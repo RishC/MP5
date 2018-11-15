@@ -36,7 +36,7 @@ public partial class MainController : MonoBehaviour
             }
         }
         else if (Input.GetKey(KeyCode.LeftControl)) {
-            if (MainWorld.TheMesh.manipulationIsOff == true) MainWorld.TheMesh.InitControllers();
+            if (MainWorld.TheMesh.manipulationIsOff == true) MainWorld.TheMesh.ShowControllers();
 
             //watch for selection with LBM
             if (Input.GetMouseButtonDown(0)) // Mouse Left Down

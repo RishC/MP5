@@ -641,6 +641,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4004525682680860, guid: f91c58807bc5344628e121439b7b65d0,
     type: 2}
   m_PrefabInternal: {fileID: 2015259195}
+--- !u!1 &1438062520 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1586819119114746, guid: f91c58807bc5344628e121439b7b65d0,
+    type: 2}
+  m_PrefabInternal: {fileID: 2015259195}
+--- !u!114 &1438062524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1438062520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e7c3658db7f24b78af1efac25656a67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Offset: {x: 0, y: 0}
+  Scale: {x: 0.5, y: 0.5}
 --- !u!1 &1562456477
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,6 +838,9 @@ MonoBehaviour:
   CylinderControl: {fileID: 0}
   ObjectDropdown: {fileID: 0}
   MCM: {fileID: 479362882}
+  minMove: 1
+  maxMove: 250
+  sensitivity: 10
 --- !u!224 &1809041108 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224925585032533742, guid: 0063ea66f79c76c4190ea329cb8d79f0,
@@ -1032,6 +1053,11 @@ Prefab:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 23294302391371246, guid: f91c58807bc5344628e121439b7b65d0,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d118c8eb6fe345c438c536b978e8bd29, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f91c58807bc5344628e121439b7b65d0, type: 2}
   m_IsPrefabAsset: 0

@@ -21,10 +21,14 @@ public partial class MyMesh : MonoBehaviour
 
     void Update()
     {
+        if (mControllers == null || manipulationIsOff == true) return;
          Mesh theMesh = GetComponent<MeshFilter>().mesh;         Vector3[] v = theMesh.vertices;
+        Vector3[] n = theMesh.normals;
+         for (int i = 0; i < mControllers.Length; i++)         {
+            v[i] = mControllers[i].transform.localPosition;         }
 
-        if (mControllers == null || manipulationIsOff == true) return;         for (int i = 0; i < mControllers.Length; i++)         {
-            v[i] = mControllers[i].transform.localPosition;         }          theMesh.vertices = v;
+        ComputeNormals(v, n);          theMesh.vertices = v;
+        theMesh.normals = n;
     }
 
     void updateMesh() {
@@ -38,10 +42,12 @@ public partial class MyMesh : MonoBehaviour
         Vector3[] v = new Vector3[vertNum];   // 2x2 mesh needs 3x3 vertices
         int[] t = new int[triangNum];         // Number of triangles: 2x2 mesh and 2x triangles on each mesh-unit
         Vector3[] n = new Vector3[vertNum];   // MUST be the same as number of vertices
+        Vector2[] uv = new Vector2[vertNum];
 
         float deltaM = height / M;
         float deltaN = width / N;
 
+        //setting v
         int z = 0;
         for (int i = 0; i < (M + 1); i++)
         {
@@ -52,11 +58,24 @@ public partial class MyMesh : MonoBehaviour
             }
         }
 
+        //setting uv
+        z = 0;
+        for (int i = 0; i < (M + 1); i++)
+        {
+            for (int j = 0; j < (N + 1); j++)
+            {
+                uv[z] = new Vector2(j * 0.5f, i * 0.5f);
+                z++;
+            }
+        }
+
+        //setting n
         for (int i = 0; i < vertNum; i++)
         {
             n[i] = new Vector3(0, 1, 0);
         }
 
+        //setting t
         z = 0;
         int b = 0; //base value
         for (int i = 0; i < (M); i++)
@@ -83,8 +102,14 @@ public partial class MyMesh : MonoBehaviour
         theMesh.vertices = v; //  new Vector3[3];
         theMesh.triangles = t; //  new int[3];
         theMesh.normals = n;
+        theMesh.uv = uv;
 
-        if (manipulationIsOff == false) InitControllers();
+        if (manipulationIsOff == false){
+            InitControllers(v);
+            InitNormals(v, n);
+        }
+
+        GetComponent<TexturePlacement>().SaveInitUV(uv);
     }
 
     public void modifyResolution(int m, int n){
