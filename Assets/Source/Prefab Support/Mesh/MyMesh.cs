@@ -8,8 +8,10 @@ public partial class MyMesh : MonoBehaviour
     float width = 2f; //width of mesh
     float height = 2f; //height of mesh
 
-    public int M = 5; //resolution for rows
-    public int N = 5; // rsolution for columns
+    int M = 5; //resolution for rows
+    int N = 5; // rsolution for columns
+
+    bool flag = true;
 
     public bool manipulationIsOff = true;
 
@@ -22,7 +24,8 @@ public partial class MyMesh : MonoBehaviour
     void Update()
     {
         if (mControllers == null || manipulationIsOff == true) return;
-         Mesh theMesh = GetComponent<MeshFilter>().mesh;         Vector3[] v = theMesh.vertices;
+         Mesh theMesh = GetComponent<MeshFilter>().mesh;
+         Vector3[] v = theMesh.vertices;
         Vector3[] n = theMesh.normals;
          for (int i = 0; i < mControllers.Length; i++)         {
             v[i] = mControllers[i].transform.localPosition;         }
@@ -58,13 +61,13 @@ public partial class MyMesh : MonoBehaviour
             }
         }
 
-        //setting uv
+        ////setting uv
         z = 0;
         for (int i = 0; i < (M + 1); i++)
         {
             for (int j = 0; j < (N + 1); j++)
             {
-                uv[z] = new Vector2(j * 0.5f, i * 0.5f);
+                uv[z] = new Vector2(j * deltaN, i * deltaM);
                 z++;
             }
         }
