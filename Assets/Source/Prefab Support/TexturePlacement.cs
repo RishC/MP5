@@ -34,13 +34,6 @@ public class TexturePlacement : MonoBehaviour
         theMesh.uv = uv;
     }
 
-    Vector2 Rotate(Vector2 init, float rot)
-    {
-        float cos = Mathf.Cos(rot * Mathf.Deg2Rad);
-        float sin = Mathf.Sin(rot * Mathf.Deg2Rad);
-        return new Vector2( init.x * cos - init.y * sin, init.x * sin + init.y * cos);
-    }
-
     public void setTranslation(Vector3 nt){
         Offset = new Vector2(nt.x, nt.y);
     }
