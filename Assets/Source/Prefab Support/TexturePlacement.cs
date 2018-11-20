@@ -23,15 +23,12 @@ public class TexturePlacement : MonoBehaviour
         Vector2[] uv = theMesh.uv;
         for (int i = 0; i < uv.Length; i++)
         {
-            //scale
-            uv[i].x = mInitUV[i].x * Scale.x;
-            uv[i].y = mInitUV[i].y * Scale.y;
 
-            //rotation
-            uv[i] = Rotate(uv[i], Rotation);
-
-            //translation
-            uv[i] = Offset + uv[i];
+            Matrix3x3 trs = Matrix3x3Helpers.CreateTRS(Offset, Rotation, Scale);
+            Vector3 InitUV = new Vector3(mInitUV[i].x, mInitUV[i].y, 1);
+            Vector3 newUV = trs * InitUV;
+            uv[i].x = newUV.x;
+            uv[i].y = newUV.y;
 
         }
         theMesh.uv = uv;
@@ -39,9 +36,9 @@ public class TexturePlacement : MonoBehaviour
 
     Vector2 Rotate(Vector2 init, float rot)
     {
-        float c = Mathf.Cos(rot * Mathf.Deg2Rad);
-        float s = Mathf.Sin(rot * Mathf.Deg2Rad);
-        return new Vector2( init.x * c - init.y * s, init.x * s + init.y * c);
+        float cos = Mathf.Cos(rot * Mathf.Deg2Rad);
+        float sin = Mathf.Sin(rot * Mathf.Deg2Rad);
+        return new Vector2( init.x * cos - init.y * sin, init.x * sin + init.y * cos);
     }
 
     public void setTranslation(Vector3 nt){
