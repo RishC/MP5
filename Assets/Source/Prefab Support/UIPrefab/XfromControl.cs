@@ -9,6 +9,7 @@ public class XfromControl : MonoBehaviour {
     public Text ObjectName;
 
     private GameObject mSelected;
+    private TexturePlacement mTexture;
     private Vector3 mPreviousSliderValues = Vector3.zero;
 
 	// Use this for initialization
@@ -94,14 +95,11 @@ public class XfromControl : MonoBehaviour {
     //---------------------------------------------------------------------------------
 
     // new object selected
-    public void SetSelectedObject(GameObject g)
+    public void SetSelectedObject(TexturePlacement tp)
     {
-        mSelected = g;
+        mSelected = tp.gameObject;
+        mTexture = tp;
         mPreviousSliderValues = Vector3.zero;
-        if (g != null)
-            ObjectName.text = "Selected:" + g.name;
-        else
-            ObjectName.text = "Selected: none";
         ObjectSetUI();
     }
 
@@ -120,16 +118,18 @@ public class XfromControl : MonoBehaviour {
         if (T.isOn)
         {
             if (mSelected != null)
-                p = mSelected.transform.localPosition;
+            {
+                p = new Vector3(mTexture.getTranslation().x, mTexture.getTranslation().y, 0);
+            }
             else
                 p = Vector3.zero;
         }
         else if (S.isOn)
         {
             if (mSelected != null)
-                p = mSelected.transform.localScale;
+                p = new Vector3(mTexture.getScale().x, mTexture.getScale().y, 0);
             else
-                p = Vector3.one;
+                p = new Vector3(0.5f, 0.5f, 0);;
         }
         else
         {
@@ -145,11 +145,13 @@ public class XfromControl : MonoBehaviour {
 
         if (T.isOn)
         {
-            mSelected.transform.localPosition = p;
+            mTexture.setTranslation(p);
+            //mSelected.transform.localPosition = p;
         }
         else if (S.isOn)
         {
-            mSelected.transform.localScale = p;
+            mTexture.setScale(p);
+            //mSelected.transform.localScale = p;
         } else
         {
             mSelected.transform.localRotation *= q;

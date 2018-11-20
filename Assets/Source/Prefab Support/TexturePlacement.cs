@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TexturePlacement : MonoBehaviour
 {
-    public Vector2 Offset = Vector2.zero;
-    public Vector2 Scale = new Vector2(0.5f, 0.5f);
+    Vector2 Offset = Vector2.zero;
+    Vector2 Scale = new Vector2(0.5f, 0.5f);
     Vector2[] mInitUV = null; // initial values
 
     public void SaveInitUV(Vector2[] uv)
@@ -27,5 +27,23 @@ public class TexturePlacement : MonoBehaviour
             uv[i] = Offset + uv[i];
         }
         theMesh.uv = uv;
+    }
+
+    public void setTranslation(Vector3 nt){
+        Offset = new Vector2(nt.x, nt.y);
+    }
+
+    public void setScale(Vector3 ns){
+        Scale = new Vector2(ns.x, ns.y);
+    }
+
+    public Vector2 getTranslation()
+    {
+        return Offset;
+    }
+
+    public Vector2 getScale()
+    {
+        return Scale;
     }
 }

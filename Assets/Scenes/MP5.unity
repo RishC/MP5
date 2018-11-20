@@ -1113,7 +1113,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5, y: 170}
+  m_AnchoredPosition: {x: 5, y: 210}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1335795684
@@ -1152,7 +1152,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Offset: {x: 0, y: 0}
-  Scale: {x: 1, y: 1}
+  Scale: {x: 0.5, y: 0.5}
+--- !u!114 &1560890449 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114582510350720084, guid: 1bc3e81e805883f4eb627f6f11e25dbf,
+    type: 2}
+  m_PrefabInternal: {fileID: 414582850}
+  m_Script: {fileID: 11500000, guid: 606785797494fc945a872f1acf67011c, type: 3}
 --- !u!1 &1562456477
 GameObject:
   m_ObjectHideFlags: 0
@@ -1328,14 +1334,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainWorld: {fileID: 710668268}
   MainCamera: {fileID: 479362884}
-  XFormControl: {fileID: 0}
-  MeshControl: {fileID: 0}
+  TextureControl: {fileID: 1560890449}
+  MeshControl: {fileID: 1335795684}
   CylinderControl: {fileID: 0}
   ObjectDropdown: {fileID: 0}
   MCM: {fileID: 479362882}
-  minMove: 1
-  maxMove: 250
-  sensitivity: 10
 --- !u!224 &1809041108 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224925585032533742, guid: 0063ea66f79c76c4190ea329cb8d79f0,
@@ -1598,6 +1601,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d118c8eb6fe345c438c536b978e8bd29, type: 2}
+    - target: {fileID: 114669907777363532, guid: f91c58807bc5344628e121439b7b65d0,
+        type: 2}
+      propertyPath: texturePlacement
+      value: 
+      objectReference: {fileID: 1438062524}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f91c58807bc5344628e121439b7b65d0, type: 2}
   m_IsPrefabAsset: 0

@@ -7,10 +7,6 @@ using UnityEngine.UI;
 public partial class MainController : MonoBehaviour
 {
 
-    public float minMove = 1f;
-    public float maxMove = 250f;
-    public float sensitivity = 10f;
-
     void OnGUI()
     {
 

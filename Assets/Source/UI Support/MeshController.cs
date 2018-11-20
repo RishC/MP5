@@ -6,6 +6,7 @@ public class MeshController : MonoBehaviour {
 
     public SliderWithEcho M, N;
     public MainController MainController;
+
 	// Use this for initialization
 	void Start () {
         M.SetSliderListener(MValueChanged);

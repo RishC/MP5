@@ -17,9 +17,7 @@ public class TheWorld : MonoBehaviour {
         Cylinder = 1
     }
     ObjectType currentObject = ObjectType.Mesh;
-    int ResolutionM;
-    int ResolutionN;
-    int Rotation;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -45,8 +43,6 @@ public class TheWorld : MonoBehaviour {
     {
         if (currentObject == ObjectType.Mesh)
         {
-            ResolutionM = m;
-            ResolutionN = n;
             TheMesh.modifyResolution(m, n);
         }
     }
@@ -55,9 +51,7 @@ public class TheWorld : MonoBehaviour {
     {
         if (currentObject == ObjectType.Cylinder)
         {
-            ResolutionM = m;
-            ResolutionN = n;
-            Rotation = rotation;
+            //not yet implemented
         }
     }
 
@@ -94,6 +88,7 @@ public class TheWorld : MonoBehaviour {
 
     public void MoveAxisFrame(float amount)
     {
+        if (selectedAxisFrameScript == null) return;
         selectedAxisFrameScript.TranslateTo(amount, selectedAxis);
         selectedVertex.transform.localPosition = selectedAxisFrameScript.GetTranslation();
     }

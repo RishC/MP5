@@ -4,14 +4,13 @@ using UnityEngine;
 
 public partial class MyMesh : MonoBehaviour
 {
+    public TexturePlacement texturePlacement = null;
 
     float width = 2f; //width of mesh
     float height = 2f; //height of mesh
 
     int M = 5; //resolution for rows
     int N = 5; // rsolution for columns
-
-    bool flag = true;
 
     public bool manipulationIsOff = true;
 
@@ -112,7 +111,7 @@ public partial class MyMesh : MonoBehaviour
             InitNormals(v, n);
         }
 
-        GetComponent<TexturePlacement>().SaveInitUV(uv);
+        texturePlacement.SaveInitUV(uv);
     }
 
     public void modifyResolution(int m, int n){
