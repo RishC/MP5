@@ -134,6 +134,7 @@ public class XfromControl : MonoBehaviour {
         else
         {
             p = Vector3.zero;
+            p.z = mTexture.getRotation();
         }
         return p;
     }
@@ -154,7 +155,7 @@ public class XfromControl : MonoBehaviour {
             //mSelected.transform.localScale = p;
         } else
         {
-            mSelected.transform.localRotation *= q;
+            mTexture.setRotation(p.z);
         }
     }
 }
