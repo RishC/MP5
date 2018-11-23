@@ -36,7 +36,7 @@ public partial class MyCylinder : MonoBehaviour
         ComputeNormals(v, n);
 
         theMesh.vertices = v;
-        //theMesh.normals = n; // fixes illumination gap
+        theMesh.normals = n;
     }
 
     void UpdateMesh()

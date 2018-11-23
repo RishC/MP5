@@ -68,6 +68,18 @@ public partial class MyCylinder : MonoBehaviour {
             b++;
         }
 
+        if (Rotation == 360f)
+        {
+            for (int i = 0; i < (M); i++)
+            {
+                Vector3 first = n[i];
+                Vector3 last = n[(N - 1) * M + i];
+                Vector3 avg = first + last;
+                n[i] = avg.normalized;
+                n[(N - 1) * M + i] = avg.normalized;
+            }
+        }
+
         for (int i = 0; i < n.Length; i++) n[i] = -n[i].normalized;
 
         UpdateNormals(v, n);
