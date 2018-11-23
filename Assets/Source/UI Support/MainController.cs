@@ -16,7 +16,7 @@ public partial class MainController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         InitGame();
-        //InitObjectDropdown();
+        InitObjectDropdown();
         TextureControl.SetSelectedObject(MainWorld.TheMesh.texturePlacement);
     }
 	
@@ -28,7 +28,7 @@ public partial class MainController : MonoBehaviour {
     void InitGame()
     {
         MainWorld.SetMeshParameters(5, 5);
-        //ShowMesh();
+        ShowMesh();
     }
 
 }

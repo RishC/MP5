@@ -23,13 +23,20 @@ public partial class MyMesh : MonoBehaviour
     void Update()
     {
         if (mControllers == null || manipulationIsOff == true) return;
-         Mesh theMesh = GetComponent<MeshFilter>().mesh;
-         Vector3[] v = theMesh.vertices;
-        Vector3[] n = theMesh.normals;
-         for (int i = 0; i < mControllers.Length; i++)         {
-            v[i] = mControllers[i].transform.localPosition;         }
 
-        ComputeNormals(v, n);          theMesh.vertices = v;
+        Mesh theMesh = GetComponent<MeshFilter>().mesh;
+
+        Vector3[] v = theMesh.vertices;
+        Vector3[] n = theMesh.normals;
+
+        for (int i = 0; i < mControllers.Length; i++)
+        {
+            v[i] = mControllers[i].transform.localPosition;
+        }
+
+        ComputeNormals(v, n);
+
+        theMesh.vertices = v;
         theMesh.normals = n;
     }
 
@@ -120,4 +127,4 @@ public partial class MyMesh : MonoBehaviour
         updateMesh();
     }
 }
- 
+

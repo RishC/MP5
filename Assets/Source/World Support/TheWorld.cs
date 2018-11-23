@@ -5,6 +5,7 @@ using UnityEngine;
 public class TheWorld : MonoBehaviour {
 
     public MyMesh TheMesh = null;
+    public MyCylinder TheCylinder = null;
 
     GameObject selectedAxisFrame = null;
     AxisFrame selectedAxisFrameScript = null;
@@ -30,12 +31,16 @@ public class TheWorld : MonoBehaviour {
     public void ShowMeshObject(int[] values)
     {
         currentObject = ObjectType.Mesh;
+        TheMesh.gameObject.SetActive(true);
+        TheCylinder.gameObject.SetActive(false);
         SetMeshParameters(values[0], values[1]);
     }
 
     public void ShowCylinderObject(int[] values)
     {
         currentObject = ObjectType.Cylinder;
+        TheMesh.gameObject.SetActive(false);
+        TheCylinder.gameObject.SetActive(true);
         SetCylinderParameters(values[0], values[1], values[2]);
     }
 
@@ -51,7 +56,7 @@ public class TheWorld : MonoBehaviour {
     {
         if (currentObject == ObjectType.Cylinder)
         {
-            //not yet implemented
+            TheCylinder.modifyCylinder(m, n, rotation);
         }
     }
 
@@ -91,5 +96,38 @@ public class TheWorld : MonoBehaviour {
         if (selectedAxisFrameScript == null) return;
         selectedAxisFrameScript.TranslateTo(amount, selectedAxis);
         selectedVertex.transform.localPosition = selectedAxisFrameScript.GetTranslation();
+    }
+
+    public bool CheckSelectedObjectManipulation()
+    {
+        if (currentObject == ObjectType.Cylinder)
+        {
+            return TheCylinder.manipulationIsOff;
+        }
+        return TheMesh.manipulationIsOff;
+    }
+
+    public void ShowControllers()
+    {
+        if (currentObject == ObjectType.Cylinder)
+        {
+            TheCylinder.ShowControllers();
+        }
+        if (currentObject == ObjectType.Mesh)
+        {
+            TheMesh.ShowControllers();
+        }
+    }
+
+    public void ClearControllers()
+    {
+        if (currentObject == ObjectType.Cylinder)
+        {
+            TheCylinder.ClearControllers();
+        }
+        if (currentObject == ObjectType.Mesh)
+        {
+            TheMesh.ClearControllers();
+        }
     }
 }

@@ -32,7 +32,7 @@ public partial class MainController : MonoBehaviour
             }
         }
         else if (Input.GetKey(KeyCode.LeftControl)) {
-            if (MainWorld.TheMesh.manipulationIsOff == true) MainWorld.TheMesh.ShowControllers();
+            if (MainWorld.CheckSelectedObjectManipulation() == true) MainWorld.ShowControllers();
 
             //watch for selection with LBM
             if (Input.GetMouseButtonDown(0)) // Mouse Left Down
@@ -61,8 +61,8 @@ public partial class MainController : MonoBehaviour
                 MainWorld.MoveAxisFrame(scrolledAmount);
             }
         } else {
-            if (MainWorld.TheMesh.manipulationIsOff == false){
-                MainWorld.TheMesh.ClearControllers();
+            if (MainWorld.CheckSelectedObjectManipulation() == false){
+                MainWorld.ClearControllers();
                 MainWorld.RemoveAxisFrameFromSelected();
                 MainWorld.SetSelectedAxis('n');
             } 
