@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public partial class MyCylinder : MonoBehaviour {
+public partial class MyCylinder : MonoBehaviour
+{
 
     float length = 2f; //width of mesh
     float width = 2f; //height of mesh
@@ -13,7 +14,8 @@ public partial class MyCylinder : MonoBehaviour {
 
     public bool manipulationIsOff = true;
 
-    void Start () {
+    void Start()
+    {
         UpdateMesh();
     }
 
@@ -34,7 +36,7 @@ public partial class MyCylinder : MonoBehaviour {
         ComputeNormals(v, n);
 
         theMesh.vertices = v;
-        theMesh.normals = n;
+        //theMesh.normals = n; // fixes illumination gap
     }
 
     void UpdateMesh()
@@ -51,7 +53,7 @@ public partial class MyCylinder : MonoBehaviour {
 
         float deltaRotation = Rotation / (N - 1) * Mathf.Deg2Rad;
 
-        float deltaHeight = length / M;
+        float deltaHeight = length / (M - 1);
 
         //setting v
         int index = 0;
@@ -66,7 +68,7 @@ public partial class MyCylinder : MonoBehaviour {
             {
                 n[index] = (new Vector3(cos, 0f, sin));
                 v[index++] = new Vector3(radius * cos, yValue, radius * sin);
-                
+
                 yIndex++;
                 yValue += deltaHeight;
             }
@@ -82,9 +84,9 @@ public partial class MyCylinder : MonoBehaviour {
         //setting t
         int z = 0;
         int b = 0; //base value
-        for (int i = 0; i < (N-1); i++)
+        for (int i = 0; i < (N - 1); i++)
         {
-            for (int j = 0; j < (M-1); j++)
+            for (int j = 0; j < (M - 1); j++)
             {
 
                 //bottom triangle
@@ -107,7 +109,12 @@ public partial class MyCylinder : MonoBehaviour {
         mesh.vertices = v;
         mesh.triangles = t;
         mesh.normals = n;
-        mesh.RecalculateBounds();
+
+        if (manipulationIsOff == false)
+        {
+            InitControllers(v);
+            InitNormals(v, n);
+        }
     }
 
     public void modifyCylinder(int m, int n, int rotation)

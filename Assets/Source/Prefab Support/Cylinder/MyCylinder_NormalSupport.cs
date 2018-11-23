@@ -32,13 +32,12 @@ public partial class MyCylinder : MonoBehaviour {
     {
         Vector3 a = v[i1] - v[i0];
         Vector3 b = v[i2] - v[i0];
-        return -(Vector3.Cross(a, b).normalized);
+        return Vector3.Cross(a, b).normalized;
     }
 
     void ComputeNormals(Vector3[] v, Vector3[] n)
     {
-        int num = (2 * M * N);
-
+        int num = (2 * (M-1) * (N-1));
         Vector3[] triNormal = new Vector3[num];
 
         for (int i = 0; i < n.Length; i++) n[i] = new Vector3(0, 0, 0);
@@ -51,8 +50,8 @@ public partial class MyCylinder : MonoBehaviour {
             for (int j = 0; j < (M-1); j++)
             {
 
-                triNormal[z] = FaceNormal(v, b + N, b + N + 1, b);
-                triNormal[z + 1] = FaceNormal(v, b, b + N + 1, b + 1);
+                triNormal[z] = FaceNormal(v, b + M, b + M + 1, b);
+                triNormal[z + 1] = FaceNormal(v, b, b + M + 1, b + 1);
 
                 n[b] += triNormal[z];
                 n[b + M] += triNormal[z];
@@ -60,7 +59,7 @@ public partial class MyCylinder : MonoBehaviour {
 
                 n[b] += triNormal[z + 1];
                 n[b + 1] += triNormal[z + 1];
-                n[b + M] += triNormal[z + 1];
+                n[b + M + 1] += triNormal[z + 1];
 
 
                 z += 2;
@@ -69,7 +68,7 @@ public partial class MyCylinder : MonoBehaviour {
             b++;
         }
 
-        for (int i = 0; i < n.Length; i++) n[i] = n[i].normalized;
+        for (int i = 0; i < n.Length; i++) n[i] = -n[i].normalized;
 
         UpdateNormals(v, n);
     }

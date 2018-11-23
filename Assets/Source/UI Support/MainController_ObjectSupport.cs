@@ -7,6 +7,7 @@ public partial class MainController : MonoBehaviour {
     void ShowMesh()
     {
         MeshControl.gameObject.SetActive(true);
+        TextureControl.gameObject.SetActive(true);
         CylinderControl.gameObject.SetActive(false);
         MainWorld.ShowMeshObject(MeshControl.GetValues());
     }
@@ -14,6 +15,7 @@ public partial class MainController : MonoBehaviour {
     void ShowCylinder()
     {
         MeshControl.gameObject.SetActive(false);
+        TextureControl.gameObject.SetActive(false);
         CylinderControl.gameObject.SetActive(true);
         MainWorld.ShowCylinderObject(CylinderControl.GetValues());
     }
