@@ -27,16 +27,50 @@ public partial class MyCylinder : MonoBehaviour
 
         Vector3[] v = theMesh.vertices;
         Vector3[] n = theMesh.normals;
-
+        ComputeControllerPosition();
         for (int i = 0; i < mControllers.Length; i++)
         {
             v[i] = mControllers[i].transform.localPosition;
         }
-
         ComputeNormals(v, n);
 
         theMesh.vertices = v;
         theMesh.normals = n;
+    }
+
+    void ComputeControllerPosition()
+    {
+        Vector3[] controllerVertices = new Vector3[M];
+        for (int i = 0; i < M; i++)
+        {
+            controllerVertices[i] = mControllers[i].transform.localPosition;
+        }
+
+        int counter = 0;
+        float r = 0;
+        float deltaRotation = Rotation / (N - 1) * Mathf.Deg2Rad;
+        r += deltaRotation;
+        for (int i = M; i < mControllers.Length; i++)
+        {
+            Vector3 temp = mControllers[i].transform.localPosition;
+            temp.y = controllerVertices[counter].y;
+
+            Vector3 temp2 = controllerVertices[counter];
+
+            //calculate radius:
+            float cos = Mathf.Cos(r);
+            float sin = Mathf.Sin(r);
+            float rads = Mathf.Sqrt((temp2.x * temp2.x) + (temp2.z * temp2.z));
+            temp.x = rads * cos;
+            temp.z = rads * sin;
+            mControllers[i].transform.localPosition = temp;
+            counter++;
+            if (counter >= M)
+            {
+                counter = 0;
+                r += deltaRotation;
+            }
+        }
     }
 
     void UpdateMesh()
@@ -67,7 +101,7 @@ public partial class MyCylinder : MonoBehaviour
             while (yIndex < M)
             {
                 n[index] = (new Vector3(cos, 0f, sin));
-                v[index++] = new Vector3(radius * cos, yValue, radius * sin);
+                v[index++] = new Vector3(radius * cos, yValue - 1f, radius * sin);
 
                 yIndex++;
                 yValue += deltaHeight;

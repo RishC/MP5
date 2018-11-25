@@ -13,7 +13,7 @@ public partial class MyCylinder : MonoBehaviour {
 
         mControllers = new GameObject[v.Length];
         //mNormal = new GameObject[v.Length];
-        for (int i = 0; i < v.Length; i++)
+        for (int i = 0; i < M; i++)
         {
             //sphere creation
             mControllers[i] = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -22,6 +22,14 @@ public partial class MyCylinder : MonoBehaviour {
 
             mControllers[i].transform.localPosition = v[i];
             mControllers[i].transform.parent = this.transform;
+        }
+        for (int i = M; i < v.Length; i++)
+        {
+            mControllers[i] = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            mControllers[i].layer = 2;
+            mControllers[i].transform.localScale = new Vector3(0.08f, 0.08f, 0.08f);
+            Renderer mRenderer = mControllers[i].GetComponent<Renderer>();
+            mRenderer.material.color = Color.black;
         }
         manipulationIsOff = false;
     }

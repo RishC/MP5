@@ -48,6 +48,7 @@ public class TheWorld : MonoBehaviour {
     {
         if (currentObject == ObjectType.Mesh)
         {
+            RemoveAxisFrameFromSelected();
             TheMesh.modifyResolution(m, n);
         }
     }
@@ -56,6 +57,7 @@ public class TheWorld : MonoBehaviour {
     {
         if (currentObject == ObjectType.Cylinder)
         {
+            RemoveAxisFrameFromSelected();
             TheCylinder.modifyCylinder(m, n, rotation);
         }
     }
